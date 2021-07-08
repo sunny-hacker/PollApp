@@ -1,0 +1,35 @@
+<!-- results.html -->
+{% extends "poll/base.html" %}
+
+{% block title %}Results{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Poll Result</h3>
+            </div>
+
+            <div class="panel-body">
+                <h3>{{ poll.poll_question }}</h3>
+            </div>
+
+            <ul class="list-group">
+                <li class="list-group-item">{{ poll.poll_option1 }}  <meter value="{{ poll.poll_option1_count }}" min="0" max="{{ poll.total }}"></meter></li>
+                <li class="list-group-item">{{ poll.poll_option2 }}  <meter value="{{ poll.poll_option2_count }}" min="0" max="{{ poll.total }}"></meter></li>
+                <li class="list-group-item">{{ poll.poll_option3 }}  <meter value="{{ poll.poll_option3_count }}" min="0" max="{{ poll.total }}"></meter></li>
+            </ul>
+
+            <span class="row">
+                <span>
+                    <a href="{% url 'vote' poll.pk %}" class="btn btn-info btn-sm"  >Vote</a>&nbsp;
+                    <a href="{% url 'create' %}" class="btn btn-info btn-sm"  >Create A New Poll</a>
+                    <a href="{% url 'home' %}" class="btn btn-info btn-sm"  >Go to Home Page</a> &nbsp;
+                </span>
+            </span>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
